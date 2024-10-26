@@ -5,6 +5,7 @@ Snoop is a CLI tool created with golang using cobra, which helps in transfering 
 
 ## Table of Contents
 - [Local Development Setup](#local-development-setup)
+- [Installation](#installation)
 - [How to Use](#how-to-use)
 - [File and Directory Information](#file-and-directory-information)
 - [License](#license)
@@ -34,6 +35,26 @@ To set up the project for local development, follow these steps:
     ```sh
     make run
     ```
+
+## Installation
+> **Note:** Working on releasing the binary directly to package repos like Choco (windows), apt-get (Linux), as of now for these platform you can download the zip/tar.gz files.
+
+As for Mac users you can directly install it via **Homebrew**
+
+```sh
+brew tap deepraj02/taps
+```
+then 
+
+```sh
+brew install snoop
+```
+
+**OR**
+
+```sh
+brew install deepraj02/taps/snoop
+```
 
 ## How to Use
 ![Share Page](assets/share-page.png)
