@@ -36,11 +36,13 @@ archives:
       - goos: windows
         format: zip
 brews:
-- name: snoop
-  homepage: https://github.com/deepraj02/homebrew-taps
-  tap:
-    owner: deepraj02
-    name: homebrew-taps
+  -
+    name: snoop
+    homepage: https://github.com/deepraj02/homebrew-taps
+    repository:
+      owner: deepraj02
+      name: homebrew-taps
+
 
 changelog:
   sort: asc
