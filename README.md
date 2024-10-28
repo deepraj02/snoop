@@ -39,22 +39,9 @@ To set up the project for local development, follow these steps:
 ## Installation
 > **Note:** Working on releasing the binary directly to package repos like Choco (windows), apt-get (Linux), as of now for these platform you can download the zip/tar.gz files.
 
-As for Mac users you can directly install it via **Homebrew**
+For a step-by-step installation process for all OS, refer to [INSTALLATION.md](INSTALLATION.md).
 
-```sh
-brew tap deepraj02/taps
-```
-then 
 
-```sh
-brew install snoop
-```
-
-**OR**
-
-```sh
-brew install deepraj02/taps/snoop
-```
 
 ## How to Use
 ![Share Page](assets/share-page.png)
