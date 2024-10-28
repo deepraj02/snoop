@@ -38,3 +38,17 @@ As for now you can install the zip file for Windows from the [release](https://g
 - Now add the path to your System Variable.
 
 Snoop should work fine now.
+
+## Linux :
+
+#### Steps : 
+
+- Install the `tar.gz` for the [Release](https://github.com/deepraj02/snoop/releases) page.
+- Unzip the file and set the path in your `~/.bashrc` file.
+
+> **Note**: If you want to change it permanently add export 
+``` bash
+PATH=$PATH:</path/to/file>
+```
+> to your ~/.bashrc file (just at the end is fine).
+
