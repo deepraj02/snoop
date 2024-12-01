@@ -47,6 +47,9 @@ const htmlTemplate = `
             margin: 5px 0;
             background-color: #f5f5f5;
             border-radius: 4px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
         .file-link {
             text-decoration: none;
@@ -55,20 +58,35 @@ const htmlTemplate = `
         .file-link:hover {
             text-decoration: underline;
         }
+        .action-buttons {
+            display: flex;
+            gap: 10px;
+        }
+        .download-button {
+            background: none;
+            border: none;
+            color: #4CAF50;
+            cursor: pointer;
+            padding: 5px;
+        }
+        .download-button:hover {
+            text-decoration: underline;
+        }
     </style>
 </head>
 <body>
     <h1>Available Files</h1>
     <ul class="file-list">
-    {{range .Files}} 
+    {{range .Files}}
         <li class="file-item">
-            <a href="/download/{{.}}" class="file-link">📄 {{.}}</a>
-            
+            <a href="/download/{{.}}" class="file-link" target="">📄 {{.}}</a>
+            <div class="action-buttons">
+                <a href="/download/{{.}}" download class="download-button"> Download</a>
+            </div>
         </li>
     {{end}}
     </ul>
 </body>
-
 </html>
 
 
