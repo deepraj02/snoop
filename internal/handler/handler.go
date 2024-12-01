@@ -1,7 +1,6 @@
 package handler
 
 import (
-	"fmt"
 	"net/http"
 	"os"
 	"path/filepath"
@@ -14,6 +13,8 @@ import (
 ///
 /// [FileHandler] `struct` stores the directory path where the CLI is started.
 /// It also stores a reference to the template object to render the files data into HTML.
+
+const contentType = "text/plain"
 
 type FileHandler struct {
 	dir      string
@@ -79,8 +80,23 @@ func (h *FileHandler) HandleDownload(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	w.Header().Set("Content-Disposition", fmt.Sprintf("attachment; filename=%s", filename))
-	http.ServeFile(w, r, filePath)
+	// Read file content
+	content, err := os.ReadFile(filePath)
+	if err != nil {
+		http.Error(w, "Error reading file", http.StatusInternalServerError)
+		return
+	}
+	// // Set content type based on file extension
+	// if strings.HasSuffix(filename, ".html") {
+	// 	contentType = "text/html"
+	// } else if strings.HasSuffix(filename, ".css") {
+	// 	contentType = "text/css"
+	// } else if strings.HasSuffix(filename, ".js") {
+	// 	contentType = "text/javascript"
+	// }
+
+	w.Header().Set("Content-Type", contentType)
+	w.Write(content)
 }
 
 /// [getFiles] reads the directory and returns a list of files.

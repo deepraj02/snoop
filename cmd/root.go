@@ -9,6 +9,9 @@ import (
 	"github.com/spf13/cobra"
 )
 
+// Version represents the current version of snoop
+const Version = "v2.0.0"
+
 // rootCmd represents the base command when called without any subcommands
 var rootCmd = &cobra.Command{
 	Use:   "snoop",
@@ -18,9 +21,8 @@ Navigate to the directory you want to share
 and run snoop serve to start the server.
 
 That's it
-	
 	`,
-
+	Version: Version,
 }
 
 func Execute() {
