@@ -18,16 +18,18 @@ import (
 type FileHandler struct {
 	dir      string
 	template *templates.Template
+	exclude  []string
 }
 
 ///
 ///
 /// [New] function creates a new FileHandler object with the given directory path and initializes them.
 
-func New(dir string) *FileHandler {
+func New(dir string, exclude []string) *FileHandler {
 	return &FileHandler{
 		dir:      dir,
 		template: templates.SpawnTemplate(),
+		exclude:  exclude,
 	}
 }
 
@@ -92,9 +94,13 @@ func (h *FileHandler) getFiles() ([]string, error) {
 		return nil, err
 	}
 
+	excludeContent := make(map[string]bool)
+	for _, e := range h.exclude {
+		excludeContent[e] = true
+	}
 	/// It ignores directories and returns only file names.
 	for _, entry := range entries {
-		if !entry.IsDir() {
+		if !entry.IsDir() && !excludeContent[entry.Name()] {
 			files = append(files, entry.Name())
 		}
 	}

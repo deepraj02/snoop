@@ -9,26 +9,28 @@ import (
 	"deepraj02/snoop/pkg/network"
 )
 
-///`port`: The port number on which the server listens.
-/// `dir`: The directory path where files are shared.
-/// `handler`: A FileHandler instance to handle file requests.
+// /`port`: The port number on which the server listens.
+// / `dir`: The directory path where files are shared.
+// / `handler`: A FileHandler instance to handle file requests.
 type Server struct {
 	port    string
 	dir     string
 	handler *handler.FileHandler
+	exclude []string
 }
 
-/// [Spawn] function creates a new Server object with the given port number and current directory path.
-func Spawn(port string) *Server {
+// / [Spawn] function creates a new Server object with the given port number and current directory path.
+func Spawn(port string, exclude []string) *Server {
 	dir, err := os.Getwd()
 	if err != nil {
 		log.Fatal(err)
 	}
 
 	return &Server{
-		port:    port,
+		port: port,
 		dir:     dir,
-		handler: handler.New(dir),
+		exclude: exclude,
+		handler: handler.New(dir,exclude),
 	}
 }
 
